@@ -23,9 +23,9 @@ class OrderController extends PublicController{
 	public function index(){
 		//搜索
 		//获取商家id
-		if (intval($_SESSION['admininfo']['qx'])!=4) {
-			$shop_id = intval(M('adminuser')->where('id='.intval($_SESSION['admininfo']['id']))->getField('shop_id'));
-			if ($shop_id==0) {
+		if (intval($_SESSION['admininfo']['qx'])==4) {
+			$shop_id = intval(M('order')->where('id='.intval($_SESSION['admininfo']['id']))->getField('shop_id'));
+			if ($shop_id!=NULL) {
 				$this->error('非法操作.');
 			}
 		}else{
